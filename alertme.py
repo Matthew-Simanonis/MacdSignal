@@ -43,9 +43,8 @@ class User():
         
 
 def main():
-    Matt = User('Matt', 'msimanonis@gmail.com', ['eth-usd', 'btc-usd', 'link-usd',  'uber', 'amd', 'aapl', 'tsla', 'htz', 'snap', 'pypl'])
-    Chris = User('Chris', 'csimanonis@comcast.net', ['zm', 'atvi','znga', 'dis', 'appn', 'cwbhf', 'fb', 'bb', 'alk'])
-    Bryce = User('Bryce', 'b.flanagan17@gmail.com',[])
+    Matt = User('Matt', 'email@email.com', ['eth-usd', 'btc-usd', 'link-usd',  'uber', 'amd', 'aapl', 'tsla', 'htz', 'snap', 'pypl'])
+    Chris = User('Chris', 'email@email.com', ['zm', 'atvi','znga', 'dis', 'appn', 'cwbhf', 'fb', 'bb', 'alk'])
     arg = input('Input Stock Ticker: ').lower()
     fig, axes = plt.subplots(nrows=3, ncols=1,figsize=(20,10)) # Graphing
     plt.close()
@@ -191,7 +190,7 @@ def send_mail_img(user, dataframe, stock, action, buys, sells):
     attachment = 'plot.jpg'
     msg = MIMEMultipart()
     msg["To"] = user.email
-    msg["From"] = 'msimanonis@gmail.com'
+    msg["From"] = 'email@email.com'
     msg["Subject"] = 'We got a '+ action.title() + ' signal for ' + stock.upper() + '!'
     body = f'The stock {stock.upper()} showed a minor {action} signal today at close at ${dataframe.Close[-1]}. Take a look! <br><br> Buys: {buys} <br><br> Sells: {sells} <br><br><br> https://finance.yahoo.com/quote/{stock}?p={stock} <br>'
 
@@ -209,8 +208,8 @@ def send_mail_img(user, dataframe, stock, action, buys, sells):
     server.ehlo()
     server.starttls()
     server.ehlo()
-    server.login('msimanonis@gmail.com', 'ouepwzqkbydclmre')
-    server.sendmail("msimanonis@gmail.com", user.email, msg.as_string())
+    server.login('email@email.com', 'ouepwzqkbydclmre')
+    server.sendmail("email@email.com", user.email, msg.as_string())
     server.quit()
 
     print('\n\nEmail has been sent \n')
